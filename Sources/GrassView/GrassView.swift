@@ -3,12 +3,20 @@ import SwiftUI
 public struct GrassView: View {
     
     @State private var data: [String: Int]
-    @State private var text: String = ""
+    private let formatString: String
+    
     private let now = Date()
     private var calendar = Calendar.current
+    private var formatter = DateFormatter()
+    @State private var text: String = ""
     
-    public init(data:[String: Int] ) {
+    
+    public init(data:[String: Int] = [:], formatString: String = "yyyy-MM-dd", locale:Locale? = nil, timeZone:TimeZone? = nil) {
         self._data = State<[String: Int]>(initialValue: data)
+        self.formatString = formatString
+        self.formatter.dateFormat = formatString
+        self.formatter.timeZone = timeZone
+        self.formatter.locale = locale
     }
     
     public var body: some View {
@@ -19,20 +27,29 @@ public struct GrassView: View {
                 HStack{
                     ForEach(0..<10){ col in
                         GrassViewCell(
-                            date: calendar.date(
-                                byAdding: .day,
+                            date: getDate(
                                 value: -1 * (row * 10 + col),
                                 to: now
-                            )
+                            ),
+                            inputLevel: data[getDate(value:  -1 * (row * 10 + col), to: now)] ?? 0
                         ){ date in
-                            text = DateFormatter().string(from: date)
+                            text = date
+                            
                         }
+                        
                     }
                 }
             }
+            
         }
         .padding()
         
+    }
+    
+    func getDate(value:Int, to: Date)->String {
+        let date = calendar.date(byAdding: .day, value: value, to: to) ?? Date()
+        let dateString = formatter.string(from: date )
+        return dateString
     }
 }
 

@@ -1,3 +1,3 @@
 # GrassView
 
-A description of this package.
+Swift package for displaying view like github contribution 

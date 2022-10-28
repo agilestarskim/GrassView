@@ -2,6 +2,8 @@
 
 Swift package for displaying view like github contribution 
 
+![스크린샷 2022-10-28 오후 9 58 00](https://user-images.githubusercontent.com/79740398/198595888-23233a71-fde3-4c00-b334-09b7d9858cdb.jpg)
+
 # Installing
 
 It requires iOS 14 

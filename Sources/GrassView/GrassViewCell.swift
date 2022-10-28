@@ -13,11 +13,14 @@ public struct GrassViewCell: View {
     let color: Color
     let inputLevel: Int
     let onTouch: (String) -> ()
+    
     public var body: some View {
-        
-        RoundedRectangle(
-            cornerSize: CGSize(width: 5, height: 5), style: .continuous
-        )
+        GeometryReader{ geo in
+            RoundedRectangle(
+                cornerSize: CGSize(width:  geo.size.width / 5, height: geo.size.height / 5), style: .continuous
+            )
+            
+        }
         .aspectRatio(1.0, contentMode: .fit)
         .foregroundColor(
             inputLevel == 0 ?
@@ -25,8 +28,7 @@ public struct GrassViewCell: View {
                 color.opacity(Double(inputLevel) / 10.0)
         
         )
-        .onTapGesture {
-            onTouch(date)
-        }
+        
     }
+    
 }

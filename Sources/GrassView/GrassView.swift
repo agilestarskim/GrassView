@@ -13,8 +13,7 @@ public struct GrassView: View {
     private let calendar = Calendar.current
     private let formatter = DateFormatter()
     
-    @State private var text: String = ""
-    
+    @State private var text: String
     
     public init(
         data:[String: Int] = [:],
@@ -30,12 +29,13 @@ public struct GrassView: View {
         self.formatter.dateFormat = formatString
         self.formatter.timeZone = timeZone
         self.formatter.locale = locale
+        
+        self._text = State(initialValue: formatter.string(from: today))
     }
     
     public var body: some View {
         VStack(alignment: .leading){
-            Text("time:" + text )
-            
+            Text(text)
             ForEach(0..<row, id: \.self){ row in
                 HStack{
                     ForEach(0..<col, id: \.self){ col in
@@ -45,15 +45,27 @@ public struct GrassView: View {
                             inputLevel: getLevel(rowcol: [row, col])
                         ){ date in
                             text = date
-                            
                         }
                         
                     }
                 }
             }
+            .gesture(
+                DragGesture()
+                    .onChanged{ gesture in
+                        
+                        
+                    }
+                    .onEnded{ _ in
+                        text = formatter.string(from: today)
+                        
+                    }
+                
+            )
             
         }
         .padding()
+       
         
     }
     
@@ -67,8 +79,6 @@ public struct GrassView: View {
     func getLevel(rowcol: [Int]) -> Int {
         return self.data[getDate(rowcol: rowcol, today: today)] ?? 0
     }
-    
-
 }
 
 struct GrassView_Previews: PreviewProvider {

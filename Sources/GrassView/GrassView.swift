@@ -13,7 +13,9 @@ public struct GrassView: View {
     private let calendar = Calendar.current
     private let formatter = DateFormatter()
     
+    
     @State private var text: String
+    @State private var location = CGPoint()
     
     public init(
         data:[String: Int] = [:],
@@ -42,7 +44,8 @@ public struct GrassView: View {
                         GrassViewCell(
                             date: getDate(rowcol: [row, col], today: today),
                             color: blockColor,
-                            inputLevel: getLevel(rowcol: [row, col])
+                            inputLevel: getLevel(rowcol: [row, col]),
+                            location: $location
                         ){ date in
                             text = date
                         }
@@ -50,22 +53,22 @@ public struct GrassView: View {
                     }
                 }
             }
-            .gesture(
-                DragGesture()
-                    .onChanged{ gesture in
-                        
-                        
-                    }
-                    .onEnded{ _ in
-                        text = formatter.string(from: today)
-                        
-                    }
-                
-            )
-            
         }
+        .coordinateSpace(name: "container")
         .padding()
-       
+        .gesture(
+            DragGesture(coordinateSpace: .named("container"))
+            .onChanged{ touched in
+                print(touched.location)
+                location = touched.location
+            }
+            .onEnded{ _ in
+                
+            }
+        )
+        .onTapGesture {
+            location = CGPoint()
+        }
         
     }
     

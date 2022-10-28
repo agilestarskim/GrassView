@@ -2,7 +2,6 @@
 
 Swift package for displaying view like github contribution 
 
----
 # Installing
 
 It requires iOS 14 

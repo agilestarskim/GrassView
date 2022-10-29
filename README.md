@@ -50,12 +50,15 @@ this is Dictionary Type
 default value is \[:]
 key is String Type, value is Int Type
 key means Date that store in your database
+
 *example) "2022-03-01"*
 
 invalid date is available but it won't be shown on the view
+
 *example) "2022-14-52"*
 
 keep date form constant!! not various
+
 *example) "2022-03-01" "2022/03/01" -> not good*
  
 the order of date doesn't matter. view will sort them automatically 
@@ -65,7 +68,7 @@ value means how much work at that time
 value's range is 1 ~ 10 
 outOfRange doesn't occur error but the cell would be invisible
 
-*example*
+*example)*
 ```swift
     let testCase = [
         "2022-10-26": 10,

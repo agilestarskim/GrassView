@@ -1,21 +1,22 @@
 import SwiftUI
 
 public struct GrassView: View {
-    
+    //on user's data
     private let data: [String: Int]
-    //appearance
+    //on view appearance
     private let blockColor: Color
     private let row: Int
     private let col: Int
-    
+    //on date format (data's key and this formatString have to be same if it's not it can't read data)
     private let formatString: String
-    private let today = Date()
-    private let calendar = Calendar.current
     private let formatter = DateFormatter()
     
+    //on localConstant
+    private let today = Date()
+    private let calendar = Calendar.current
     
-    @State private var text: String
-    @State private var location = CGPoint()
+    //on 
+    @ObservedObject private var viewModel: GrassViewModel
     
     public init(
         data:[String: Int] = [:],
@@ -32,12 +33,12 @@ public struct GrassView: View {
         self.formatter.timeZone = timeZone
         self.formatter.locale = locale
         
-        self._text = State(initialValue: formatter.string(from: today))
+        self._viewModel = ObservedObject(initialValue: GrassViewModel(formatter: self.formatter))
     }
     
     public var body: some View {
         VStack(alignment: .leading){
-            Text(text)
+            Text(viewModel.selectedDate)
             ForEach(0..<row, id: \.self){ row in
                 HStack{
                     ForEach(0..<col, id: \.self){ col in
@@ -45,11 +46,8 @@ public struct GrassView: View {
                             date: getDate(rowcol: [row, col], today: today),
                             color: blockColor,
                             inputLevel: getLevel(rowcol: [row, col]),
-                            location: $location
-                        ){ date in
-                            text = date
-                        }
-                        
+                            viewModel: viewModel
+                        )
                     }
                 }
             }
@@ -59,15 +57,15 @@ public struct GrassView: View {
         .gesture(
             DragGesture(coordinateSpace: .named("container"))
             .onChanged{ touched in
-                print(touched.location)
-                location = touched.location
+                viewModel.startDrag()
+                viewModel.moveLocation(touched.location)
             }
             .onEnded{ _ in
-                
+                viewModel.endDrag()
             }
         )
-        .onTapGesture {
-            location = CGPoint()
+        .onTapGesture(count:2) {
+            viewModel.tapTwice()
         }
         
     }

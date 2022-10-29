@@ -12,8 +12,7 @@ public struct GrassViewCell: View {
     let date: String
     let color: Color
     let inputLevel: Int
-    @Binding var location: CGPoint
-    let onTouch: (String) -> ()
+    let viewModel: GrassView.GrassViewModel
     
     @State var rect: CGRect = CGRect()
     @State private var scale = 1.0
@@ -41,20 +40,21 @@ public struct GrassViewCell: View {
         .aspectRatio(1.0, contentMode: .fit)
         .scaleEffect(scale)
         .animation(.default, value: scale)
-        .onChange(of: location){ _ in
-            feedback.prepare()
-            if rect.contains(location){
-                onTouch(date)
+        .onChange(of: viewModel.touchedLocation) { _ in
+            if viewModel.checkContain(rect: self.rect) {
+                viewModel.changeDate(date: date)
                 scale = 1.4
                 hover = true
+                
             }else{
-                hover  = false
                 scale = 1.0
+                hover = false
             }
         }
-        .onChange(of: hover){ hover in
-            if hover {
-                feedback.selectionChanged()
+        .onChange(of: viewModel.isDragEnd) { isDragEnd in
+            if isDragEnd && viewModel.checkSelected(date: date) {
+                scale = 1.4
+                hover = true
             }
         }
         

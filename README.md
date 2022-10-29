@@ -47,33 +47,33 @@ GrassView(
 ## data
 `data: [String: Int] = [:]`
 
-this is Dictionary Type
+This is Dictionary Type
 
-default value is \[:]
+Default value is \[:]
 
-key is String Type, value is Int Type
+Key is String Type, value is Int Type
 
-key means Date that store in your database
+Key means Date that store in your database
 
 *example) "2022-03-01"*
 
-invalid date is available but it won't be shown on the view
+Invalid date is available but it won't be shown on the view
 
 *example) "2022-14-52"*
 
-keep date form constant!! not various
+Keep date form constant!! not various
 
-*example) "2022-03-01" "2022/03/01" -> not good*
+*example) "2022-03-01", "2022/03/01" -> not good*
  
-the order of date doesn't matter. view will sort them automatically 
+The order of date doesn't matter. view will sort them automatically 
 
-duplicated date will be shown a random one
+Duplicate dates are shown as random dates
 
-value means how much work at that time 
+Value means how much work at that time 
 
-value's range is 1 ~ 10 
+Value's range is 1 ~ 10 
 
-outOfRange doesn't occur error but the cell would be invisible
+OutOfRange doesn't occur error but the cell would be invisible
 
 *example)*
 ```swift

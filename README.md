@@ -46,6 +46,7 @@ GrassView(
 
 ## data
 `data: [String: Int] = [:]`
+
 this is Dictionary Type
 default value is \[:]
 key is String Type, value is Int Type

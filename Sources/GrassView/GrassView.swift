@@ -15,7 +15,7 @@ public struct GrassView: View {
     private let today = Date()
     private let calendar = Calendar.current
     
-    //on 
+    //on viewModel
     @ObservedObject private var viewModel: GrassViewModel
     
     public init(
@@ -45,7 +45,7 @@ public struct GrassView: View {
                         GrassViewCell(
                             date: getDate(rowcol: [row, col], today: today),
                             color: blockColor,
-                            inputLevel: getLevel(rowcol: [row, col]),
+                            workLevel: getLevel(rowcol: [row, col]),
                             viewModel: viewModel
                         )
                     }

@@ -11,7 +11,7 @@ import SwiftUI
 public struct GrassViewCell: View {
     let date: String
     let color: Color
-    let inputLevel: Int
+    let workLevel: Int
     let viewModel: GrassView.GrassViewModel
     
     @State var rect: CGRect = CGRect()
@@ -23,9 +23,9 @@ public struct GrassViewCell: View {
             RoundedRectangle(
                 cornerSize: CGSize(width:  geo.size.width / 5, height: geo.size.height / 5), style: .continuous
             )
-            .fill(inputLevel == 0 ?
+            .fill(workLevel == 0 ?
                   Color.secondary.opacity(0.2) :
-                      color.opacity(Double(inputLevel) / 10.0))
+                      color.opacity(Double(workLevel) / 10.0))
             .overlay(
                 RoundedRectangle(
                     cornerSize: CGSize(width:  geo.size.width / 5, height: geo.size.height / 5), style: .continuous

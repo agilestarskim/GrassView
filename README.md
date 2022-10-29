@@ -6,7 +6,8 @@ Swift package for displaying view like github contribution
 
 # Installing
 
-It requires iOS 14 
+It requires iOS 14
+  
 In Xcode go to File -> Swift Packages -> Add Package Dependency and paste in the repo's url: https://github.com/agilestarskim/GrassView.git
 
 # Usage
@@ -20,7 +21,7 @@ place GrassView in the parent view
  
 ```swift
 VStack {
-    GrassView(data: [:])
+    GrassView()
 }
 ```
 
@@ -40,8 +41,50 @@ GrassView(
 
 ## parameter
 
-### data 
-need description later
+<details>
+<summary>data</summary>
+
+## data
+`data: [String: Int] = [:]`
+this is Dictionary Type
+default value is \[:]
+key is String Type, value is Int Type
+key means Date that store in your database
+*example) "2022-03-01"*
+
+invalid date is available but it won't be shown on the view
+*example) "2022-14-52"*
+
+keep date form constant!! not various
+*example) "2022-03-01" "2022/03/01" -> not good*
+ 
+the order of date doesn't matter. view will sort them automatically 
+duplicated date will be shown a random one
+
+value means how much work at that time 
+value's range is 1 ~ 10 
+outOfRange doesn't occur error but the cell would be invisible
+
+*example*
+```swift
+    let testCase = [
+        "2022-10-26": 10,
+        "2022-10-25": 10,
+        "2022-10-23": 4,
+        "2022-10-21": 5,
+        "2022-10-20": 10,
+        "2022-10-19": 8,
+        "2022-10-18": 6,
+        "2022-10-17": 4,
+        "2022-10-16": 2,
+        "2022-10-15": 10,
+        "2022-10-14": 2,
+        "2022-10-13": 1,
+        "2022-10-12": 7
+    ]
+```
+</details>
+ 
 
 ### blockColor
 need description later

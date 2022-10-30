@@ -35,6 +35,9 @@ public struct GrassViewCell: View {
             .onAppear {
                 rect = geo.frame(in: .named("container"))
             }
+            .onChange(of: viewModel.isPortrait){ _ in
+                rect = geo.frame(in: .named("container"))
+            }
         }
         .aspectRatio(1.0, contentMode: .fit)
         .scaleEffect(scale)

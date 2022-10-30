@@ -66,6 +66,10 @@ public struct GrassView: View {
         .onTapGesture(count:2) {
             viewModel.tapTwice()
         }
+        .onReceive(NotificationCenter.default.publisher(for: UIDevice.orientationDidChangeNotification)) { _ in
+            guard let scene = UIApplication.shared.windows.first?.windowScene else { return }
+            viewModel.isPortrait = scene.interfaceOrientation.isPortrait
+        }
     }
     func getDate(rowcol:[Int], today: Date) -> String {
         let diff = -1 * (rowcol[0] * col + rowcol[1])

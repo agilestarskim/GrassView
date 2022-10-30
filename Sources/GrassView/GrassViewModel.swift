@@ -13,6 +13,7 @@ extension GrassView {
         @Published var touchedLocation: CGPoint = CGPoint()
         @Published var selectedDate: String
         @Published var isDragEnd: Bool = false
+        @Published var isPortrait: Bool = true
         
         private let feedback = UISelectionFeedbackGenerator()
         private let formatter: DateFormatter

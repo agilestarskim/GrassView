@@ -17,7 +17,7 @@ public struct GrassViewCell: View {
     @State var rect: CGRect = CGRect()
     @State private var scale = 1.0
     @State private var hover = false
-    @State private var feedback = UISelectionFeedbackGenerator()
+    
     public var body: some View {
         GeometryReader{ geo in
             RoundedRectangle(
@@ -32,8 +32,7 @@ public struct GrassViewCell: View {
                 )
                 .strokeBorder(Color.primary.opacity(0.5), lineWidth: hover ? 1 : 0)
             )
-            
-            .onAppear{
+            .onAppear {
                 rect = geo.frame(in: .named("container"))
             }
         }
@@ -45,7 +44,6 @@ public struct GrassViewCell: View {
                 viewModel.changeDate(date: date)
                 scale = 1.4
                 hover = true
-                
             }else{
                 scale = 1.0
                 hover = false

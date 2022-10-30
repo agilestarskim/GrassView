@@ -67,11 +67,9 @@ Keep date form constant!! not various
  
 The order of date doesn't matter. view will sort them automatically 
 
-Duplicate dates are shown as random dates
-
 Value means how much work at that time 
 
-Value's range is 1 ~ 10 
+Value's range is 0 ~ 10 
 
 OutOfRange doesn't occur error but the cell would be invisible
 

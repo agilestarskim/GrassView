@@ -15,8 +15,8 @@ public struct GrassView: View {
     private let today = Date()
     private let calendar = Calendar.current
     
-    //on viewModel
     @ObservedObject private var viewModel: GrassViewModel
+    
     
     public init(
         data:[String: Int] = [:],
@@ -67,6 +67,7 @@ public struct GrassView: View {
         .onTapGesture(count:2) {
             viewModel.tapTwice()
         }
+        
         
     }
     

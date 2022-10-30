@@ -17,7 +17,6 @@ public struct GrassView: View {
     
     @ObservedObject private var viewModel: GrassViewModel
     
-    
     public init(
         data:[String: Int] = [:],
         blockColor: Color = .green,
@@ -33,7 +32,7 @@ public struct GrassView: View {
         self.formatter.timeZone = timeZone
         self.formatter.locale = locale
         
-        self._viewModel = ObservedObject(initialValue: GrassViewModel(formatter: self.formatter))
+        self._viewModel = ObservedObject(wrappedValue: GrassViewModel(formatter: self.formatter))
     }
     
     public var body: some View {
@@ -67,17 +66,13 @@ public struct GrassView: View {
         .onTapGesture(count:2) {
             viewModel.tapTwice()
         }
-        
-        
     }
-    
     func getDate(rowcol:[Int], today: Date) -> String {
         let diff = -1 * (rowcol[0] * col + rowcol[1])
         let date = calendar.date(byAdding: .day, value: diff, to: today) ?? today
         let dateString = formatter.string(from: date)
         return dateString
     }
-    
     func getLevel(rowcol: [Int]) -> Int {
         return self.data[getDate(rowcol: rowcol, today: today)] ?? 0
     }
@@ -85,8 +80,7 @@ public struct GrassView: View {
 
 struct GrassView_Previews: PreviewProvider {
     static var previews: some View {
-        GrassView(data: [:])
-          
+        GrassView(data: [:])          
   }
 }
 

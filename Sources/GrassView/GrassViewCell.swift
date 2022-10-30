@@ -12,7 +12,7 @@ public struct GrassViewCell: View {
     let date: String
     let color: Color
     let workLevel: Int
-    let viewModel: GrassView.GrassViewModel
+    @ObservedObject var viewModel: GrassView.GrassViewModel
     
     @State var rect: CGRect = CGRect()
     @State private var scale = 1.0
@@ -55,9 +55,5 @@ public struct GrassViewCell: View {
                 hover = true
             }
         }
-        
     }
-    
-    
-    
 }

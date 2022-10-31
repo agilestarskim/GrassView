@@ -137,6 +137,7 @@ you can set the total cell count by adjusting row and col
 
 <details>
 <summary>formatString</summary>
+
 ## formatString
 
 `formatString: Sting = "yyyy-MM-dd`
@@ -153,7 +154,9 @@ GrassView(data: ["20220301": 10], formatString: "yyyy-MM-dd") //-> bad
 
 <details>
 <summary>locale</summary>
+
 ## locale
+
 locale is for formatting date string to specific country
 
 if you don't pass paramter, locale would be localized automatically by finding out the current place of device
@@ -169,9 +172,10 @@ https://gist.github.com/jacobbubu/1836273
 
 <details>
 <summary>timeZone</summary>
-## timeZone
-timezone is for calculating current time based on a specific timezone
 
+## timeZone
+
+timezone is for calculating current time based on a specific timezone
 
 you can check various time zone code here
 

@@ -21,7 +21,9 @@ public struct GrassView: View {
         data:[String: Int] = [:],
         blockColor: Color = .green,
         row: Int = 5, col: Int = 10,
-        formatString: String = "yyyy-MM-dd", locale:Locale? = nil, timeZone:TimeZone? = nil
+        formatString: String = "yyyy-MM-dd",
+        locale: Locale = Locale(identifier: Locale.current.identifier),
+        timeZone: TimeZone? = TimeZone(identifier: TimeZone.current.identifier)
     ) {
         self.data = data
         self.blockColor = blockColor

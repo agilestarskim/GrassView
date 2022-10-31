@@ -130,18 +130,56 @@ VStack{
 `col: Int = 10`
 
 row means table row count and col means table column count
+
 you can set the total cell count by adjusting row and col
 
 </details>
 
-### formatString
-need description later
+<details>
+<summary>formatString</summary>
+##formatString
 
-### locale
-need description later
+`formatString: Sting = "yyyy-MM-dd`
 
-### timeZone
-need description later
+formatString is used when display text and find value as key in dictionary data 
+
+if formatString and data key format that you put are different, view can't read the data
+
+```swift
+GrassView(data: ["2022-03-01": 10], formatString: "yyyy-MM-dd") //-> good
+GrassView(data: ["20220301": 10], formatString: "yyyy-MM-dd") //-> bad 
+```  
+</details>
+
+<details>
+<summary>locale</summary>
+##locale
+locale is for formatting date string to specific country
+
+if you don't pass paramter, locale would be localized automatically by finding out the current place of device
+
+*example)*
+```swift
+GrassView(locale: Locale(identifier: "en-US"))
+``` 
+you can check various country code here
+
+https://gist.github.com/jacobbubu/1836273
+</details>
+
+<details>
+<summary>timeZone</summary>
+##timeZone
+timezone is for calculating current time based on a specific timezone
+
+
+you can check various time zone code here
+
+https://apphelp.readdle.com/?pg=kb.page&id=588
+
+</details>
+
+
 
 
 

@@ -94,14 +94,45 @@ OutOfRange doesn't occur error but the cell would be invisible
 </details>
  
 
-### blockColor
-need description later
+<details>
+<summary>blockColor</summary>
 
-### row
-need description later
+## blockColor
+`blockColor: Color = Color.green`
 
-### col
-need description later
+This is Color Type
+
+you can customize cell color using Color in SwiftUI
+
+
+*example)*
+```swift
+VStack{
+    GrassView(data: testCase1, row: 2, col: 11) // default value is .green
+    GrassView(data: testCase1, blockColor: .orange, row: 3, col: 11)
+    GrassView(data: testCase1, blockColor: .red, row: 3, col: 11)
+    GrassView(data: testCase1, blockColor: .blue, row: 3, col: 11)
+    GrassView(data: testCase1, blockColor: .cyan, row: 3, col: 11)
+    GrassView(data: testCase1, blockColor: .indigo, row: 3, col: 11)
+}    
+```
+
+![스크린샷 2022-10-31 오후 4 03 48](https://user-images.githubusercontent.com/79740398/198950564-a7847f36-f899-4f03-b50f-ace03324476f.jpg)
+
+</details>
+
+<detail>
+<summary>row & col</summary>
+
+## row & col 
+
+`row: Int = 5`
+`col: Int = 10`
+
+row means table row count and col means table column count
+you can set the total cell count by adjusting row and col
+
+</detail>
 
 ### formatString
 need description later

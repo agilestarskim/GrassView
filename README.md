@@ -39,7 +39,7 @@ GrassView(
 )
 ```
 
-## parameter
+# parameter
 
 <details>
 <summary>data</summary>
@@ -140,7 +140,7 @@ you can set the total cell count by adjusting row and col
 
 ## formatString
 
-`formatString: Sting = "yyyy-MM-dd`
+`formatString: Sting = "yyyy-MM-dd"`
 
 formatString is used when display text and find value as key in dictionary data 
 
@@ -184,6 +184,9 @@ https://apphelp.readdle.com/?pg=kb.page&id=588
 </details>
 
 
+# Features
+
+on writing..
 
 
 

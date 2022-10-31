@@ -23,9 +23,9 @@ public struct GrassViewCell: View {
             RoundedRectangle(
                 cornerSize: CGSize(width:  geo.size.width / 5, height: geo.size.height / 5), style: .continuous
             )
-            .fill(workLevel == 0 ?
-                  Color.secondary.opacity(0.2) :
-                      color.opacity(Double(workLevel) / 10.0))
+            .fill(color.opacity(Double(workLevel) * 0.1 + 0.2))
+            .saturation(Double(workLevel) * 0.1 )
+            .brightness(workLevel == 10 ? 0 : 0.1)
             .overlay(
                 RoundedRectangle(
                     cornerSize: CGSize(width:  geo.size.width / 5, height: geo.size.height / 5), style: .continuous

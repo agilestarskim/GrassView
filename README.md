@@ -121,7 +121,7 @@ VStack{
 
 </details>
 
-<detail>
+<details>
 <summary>row & col</summary>
 
 ## row & col 
@@ -132,7 +132,7 @@ VStack{
 row means table row count and col means table column count
 you can set the total cell count by adjusting row and col
 
-</detail>
+</details>
 
 ### formatString
 need description later
